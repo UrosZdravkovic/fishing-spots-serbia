@@ -1,5 +1,8 @@
 import { useState, useMemo } from 'react';
 import SpotCardList from './components/SpotCard/SpotCardList';
+import SpotDetailsModal from './components/SpotCard/SpotDetailsModal';
+import AllSpotsMap from './components/Maps/AllSpotsMap';
+import ViewToggle, { type View } from './components/ViewToggle/ViewToggle';
 import { fishingSpots } from './data/fishingSpots';
 import type { FishingSpot } from './data/fishingSpots';
 import type { FilterState } from './components/Filters/types';
@@ -9,10 +12,13 @@ import { filterSpots, getFiltersFromStorage, saveFiltersToStorage } from '@/help
 
 function App() {
   const [selectedSpot, setSelectedSpot] = useState<FishingSpot | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [filters, setFilters] = useState<FilterState>(getFiltersFromStorage);
+  const [activeView, setActiveView] = useState<View>('lista');
 
   const handleSpotClick = (spot: FishingSpot) => {
     setSelectedSpot(spot);
+    setIsModalOpen(true);
   };
 
   const handleApplyFilters = (newFilters: FilterState) => {
@@ -42,19 +48,21 @@ function App() {
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <FiltersBar filters={filters} onApply={handleApplyFilters} />
 
-        {/* Selected spot indicator */}
-        {selectedSpot && (
-          <div className="mb-6 p-4 bg-blue-50 border border-primary rounded-lg">
-            <p className="text-sm text-text">
-              Izabrano:{' '}
-              <span className="font-semibold">{selectedSpot.name}</span>
-            </p>
-          </div>
-        )}
+        <ViewToggle activeView={activeView} onViewChange={setActiveView} />
 
-        {/* Spot List */}
-        <SpotCardList spots={spots} onSpotClick={handleSpotClick} />
+        {activeView === 'lista' ? (
+          <SpotCardList spots={spots} onSpotClick={handleSpotClick} />
+        ) : (
+          <AllSpotsMap spots={spots} onSpotClick={handleSpotClick} />
+        )}
       </main>
+
+      {/* Spot Details Modal */}
+      <SpotDetailsModal
+        spot={selectedSpot}
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+      />
 
       {/* Footer */}
       <footer className="bg-gray-800 text-gray-300 mt-16">
