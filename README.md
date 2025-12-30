@@ -156,22 +156,11 @@ type FishingSpot = {
 ## 🔮 Future Improvements
 
 - [ ] User authentication and favorites system
+- [ ] User suggestions for new spots with approval
 - [ ] Weather integration for each spot
 - [ ] "Best time to fish" calculator based on conditions
 - [ ] User reviews and ratings
-- [ ] PWA support for offline access
 - [ ] Direct links to purchase fishing permits
-
----
-
-## 📝 Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
 
 ---
 
