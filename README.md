@@ -62,7 +62,7 @@ Fully responsive design with collapsible filter panel on mobile devices.
 | **Framework** | React 19, TypeScript 5.9 |
 | **Styling** | Tailwind CSS 4, CSS Variables |
 | **UI Components** | Radix UI (Dialog, Select, Tabs, Popover, Checkbox) |
-| **Maps** | Mapbox GL, react-map-gl |
+| **Maps** | Mapbox G
 | **Icons** | Lucide React |
 | **Build Tool** | Vite 7 |
 
