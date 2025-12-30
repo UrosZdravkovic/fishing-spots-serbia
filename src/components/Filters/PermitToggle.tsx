@@ -9,7 +9,7 @@ type PermitToggleProps = {
 
 export default function PermitToggle({ value, onChange }: PermitToggleProps) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 mt-2">
       <div className="flex items-center gap-2 text-sm font-medium text-gray-600">
         <Shield className="w-4 h-4 text-primary" />
         <span>Dozvola:</span>
